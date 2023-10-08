@@ -1,6 +1,6 @@
 package com.rockthejvm.part2effects
 
-import zio.*
+import zio._
 
 import java.io.IOException
 import java.net.NoRouteToHostException

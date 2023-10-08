@@ -1,6 +1,6 @@
 name := "zio"
 version := "0.1"
-scalaVersion := "3.1.3"
+scalaVersion := "2.13.8"
 
 
 lazy val zioVersion = "2.0.0"
