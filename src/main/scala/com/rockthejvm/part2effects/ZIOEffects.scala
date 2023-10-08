@@ -114,7 +114,7 @@ object ZIOEffects {
     else fibo(n - 1) + fibo(n - 2)
 
   def fiboZIO(n: Int): UIO[BigInt] =
-    if (n <= 2) ZIO.succeed(1)
+    if (n <= 2) ZIO.succeed(BigInt(1))
     else for {
       last <- ZIO.suspendSucceed(fiboZIO(n - 1))
       prev <- fiboZIO(n - 2)
@@ -122,10 +122,8 @@ object ZIOEffects {
 
   def main(args: Array[String]): Unit = {
     val runtime = Runtime.default
-    given trace: Trace = Trace.empty
-    Unsafe.unsafeCompat { (u: Unsafe) =>
-      given uns: Unsafe = u
-
+    implicit val trace: Trace = Trace.empty
+    Unsafe.unsafeCompat { implicit u =>
       val firstEffect = ZIO.succeed {
         println("computing first effect...")
         Thread.sleep(1000)

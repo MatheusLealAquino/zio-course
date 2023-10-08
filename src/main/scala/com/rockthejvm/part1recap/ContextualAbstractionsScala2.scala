@@ -16,7 +16,7 @@ object ContextualAbstractionsScala2 {
   val greeting = "Peter".greet() // new ImpersonableString("Peter").greet()
 
   // example: scala.concurrent.duration
-  import scala.concurrent.duration.*
+  import scala.concurrent.duration._
   val oneSecond = 1.second
 
   // implicit arguments and values

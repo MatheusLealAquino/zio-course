@@ -8,10 +8,8 @@ object ZIOApps {
 
   def main(args: Array[String]): Unit = {
     val runtime = Runtime.default
-    given trace: Trace = Trace.empty
-    Unsafe.unsafeCompat { unsafe =>
-      given u: Unsafe = unsafe
-
+    implicit val trace: Trace = Trace.empty
+    Unsafe.unsafeCompat { implicit u =>
       println(runtime.unsafe.run(meaningOfLife))
     }
   }
